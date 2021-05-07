@@ -4,4 +4,4 @@ Crypto currency trading simulator (WIP)
 -Buy crypto
 -Sell crypto
 
--Crypto value changes drastically over time
+idk
