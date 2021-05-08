@@ -1,7 +1,2 @@
-Crypto currency trading simulator (WIP)
-
--Start with set amout of fiat currency (EUR)
--Buy crypto
--Sell crypto
-
-idk
+<h1>Programiranje 2 projekt</h1>
+<h2>Crypto currency buying/selling itd</h2>
