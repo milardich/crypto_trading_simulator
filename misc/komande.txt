@@ -1,5 +1,0 @@
-exit - zatvori sva 3 prozora i ode na main menu
-buy - kupovina cryptovalute (npr. buy $BTC / ili mby napise se buy, i ond ide scanf za koju ucemo kripto kupit, i ond se klikne enter i potvrdi se transakcija)
-sell - -||-
-
---kasnije dodat trade
