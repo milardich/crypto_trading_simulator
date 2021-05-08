@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "stats_header.h": "c",
+        "string_functions.h": "c"
+    }
+}
