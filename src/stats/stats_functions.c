@@ -13,6 +13,26 @@ void test_Stats(){
 
 
 //=====================================//
+// Check if cryptos are already generated
+//=====================================//
+
+int _CheckCurrenciesGenerated(FILE *checkFile){
+    int c = 0;
+    c = fgetc(checkFile);
+    c = c - 48;
+    return c;
+}
+
+
+
+
+
+
+
+
+
+
+//=====================================//
 // Memory allocation for currencies
 //=====================================//
 

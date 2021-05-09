@@ -17,5 +17,9 @@
     void _DisplayCurrencies(CRYPTOCURRENCY*);
     void _SaveCurrenciesToFiles(CRYPTOCURRENCY*);
 
+    //Check if currencies are generated
+    int _CheckCurrenciesGenerated(FILE*);
+
+    
 
 #endif
