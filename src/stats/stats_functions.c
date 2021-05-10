@@ -16,10 +16,18 @@ void test_Stats(){
 // Check if cryptos are already generated
 //=====================================//
 
-int _CheckCurrenciesGenerated(FILE *checkFile){
+int _IsCurrencyGenerated(){
+
+    FILE * checkFile = fopen("../out/files/cryptogeneratedstatus.txt", "r");
+    if(checkFile == NULL){
+        printf("\nERROR: openning file isCryptoGenerated.txt\n");
+        return 1;
+    }
+    
     int c = 0;
     c = fgetc(checkFile);
     c = c - 48;
+    fclose(checkFile);
     return c;
 }
 
@@ -102,14 +110,12 @@ void _SaveCurrenciesToFiles(CRYPTOCURRENCY *currency){
     int i = 0;
     char *fileName;
 
-    /*
-    FILE * file;
-    file = fopen("../out/files/currencies/testfile.txt", "w");
-    if(file == NULL){
-        printf("\n\nError openning a file\n\n");
+    FILE *all_currencies_file;
+    all_currencies_file = fopen("../out/files/currencies/all_currencies_file.txt", "w");
+    if(all_currencies_file == NULL){
+        printf("\nERROR: all_currencies_file could not open");
+        return;
     }
-    fclose(file);
-    */
 
     for(i = 0; i < 5; i++){
         fileName = concat(3, "../out/files/currencies/", (currency + i)->name, "_value.txt");
@@ -122,9 +128,71 @@ void _SaveCurrenciesToFiles(CRYPTOCURRENCY *currency){
             return;
         }
         fprintf(file, "%.2f", (currency + i)->startValue);
-        fprintf(file, "\n%s", (currency + i)->name);
+        //fprintf(file, "\n%s", (currency + i)->name);
         fclose(file);
+
+
+        //write all curencies to all_currencies_file, so all currencies 
+        //can stored in a variable if they are already created
+        fprintf(all_currencies_file, "%s\n", (currency + i)->name);
     }
-    free(fileName);
+
+    fclose(all_currencies_file);
+    free(fileName); //needs to be freed because of concat() function
     fileName = NULL;
+}
+
+
+
+
+//=====================================//
+// Initialization of already created currency
+//=====================================//
+
+void _InitializeCurrencies(CRYPTOCURRENCY *currency){
+
+    int i = 0, j = 0;
+
+    char *currencyFileName;
+
+    FILE *allCurrenciesFile;
+    allCurrenciesFile = fopen("../out/files/currencies/all_currencies_file.txt", "r");
+    if(allCurrenciesFile == NULL){
+        printf("\nERROR: all_currencies_file could not open");
+        return;
+    }
+
+    for(i = 0; i < 5; i++){
+
+        //read name of every currency (3 letters)
+        int character = -1;
+        while((character = fgetc(allCurrenciesFile)) != EOF){
+            if(character == '\n'){
+                break;
+            }else{
+                currency[i].name[j] = character;
+                j++;    
+            }
+        }
+        j = 0;
+
+
+
+        //read value of every currency
+        currencyFileName = concat(3, "../out/files/currencies/", (currency + i)->name, "_value.txt");
+        //printf("\nDEBUG: filename: %s\n", currencyFileName);
+        FILE * cryptoValueFile = fopen(currencyFileName, "r");
+        if(cryptoValueFile == NULL){
+            printf("ERROR: file %s could not be opened", currencyFileName);
+            return;
+        }
+        //function for reading from file
+        fscanf(cryptoValueFile, "%f", &(currency + i)->startValue);
+
+        fclose(cryptoValueFile);
+        free(currencyFileName);
+    }
+    
+    //currencyFileName = NULL;
+    fclose(allCurrenciesFile);
 }

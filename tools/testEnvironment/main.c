@@ -6,8 +6,9 @@ int main(){
         return 1;
     }
 
-    int broj = 0;
-    broj = fgetc(file) - 48;
-    printf("\nbroj: %d", broj);
+    float broj = 0.0f;
+    fscanf(file, "%f", &broj);
+    printf("\nbroj: %f", broj);
+    fclose(file);
     return 0;
 }

@@ -6,7 +6,6 @@
         float startValue;
     }CRYPTOCURRENCY;
 
-    //void test_Stats();
 
     //Memory allocation
     CRYPTOCURRENCY *_Allocate(int);
@@ -18,7 +17,10 @@
     void _SaveCurrenciesToFiles(CRYPTOCURRENCY*);
 
     //Check if currencies are generated
-    int _CheckCurrenciesGenerated(FILE*);
+    int _IsCurrencyGenerated();
+
+    //initialize already created currencies
+    void _InitializeCurrencies(CRYPTOCURRENCY*);
 
     
 

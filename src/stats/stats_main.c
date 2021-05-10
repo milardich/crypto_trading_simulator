@@ -8,20 +8,17 @@
 
 
 int main(){
+    system("cls");
+    printf("STATS WINDOW\n\n");
+
     srand((unsigned)time(NULL));
 
     int isCryptoGenerated = 0;
     int numberOfCurrencies = 5;
 
-    //check if crypto is alreadys generated
-    FILE * checkFile = fopen("../out/files/cryptogeneratedstatus.txt", "r");
-    if(checkFile == NULL){
-        printf("\nERROR: openning file isCryptoGenerated.txt\n");
-        return 1;
-    }
-    isCryptoGenerated = _CheckCurrenciesGenerated(checkFile);
-    //printf("\nisCryptoGenerated: %d\n", isCryptoGenerated);
-    fclose(checkFile);
+
+    //read from txt file and store that value to isCryptoGenerated
+    isCryptoGenerated = _IsCurrencyGenerated();
 
 
     //memory allocation
@@ -33,9 +30,7 @@ int main(){
     }
     
 
-    printf("\nSTATS WINDOW\n\n");
-
-
+    //check if crypto is already generated (if its not generated (0), generate currencies)
     if(isCryptoGenerated == 0){
         //Generate number of different cryptocurrencies and store them and their properties in da files
         _GenerateCurrencies(currency);
@@ -43,7 +38,7 @@ int main(){
         _DisplayCurrencies(currency);
 
         //write char '1' to file (if currencies are already generated, there is no need to generate them again)
-        checkFile = fopen("../out/files/cryptogeneratedstatus.txt", "w");
+        FILE *checkFile = fopen("../out/files/cryptogeneratedstatus.txt", "w");
         if(checkFile == NULL){
             printf("\nERROR: openning file isCryptoGenerated.txt\n");
             return 1;
@@ -52,6 +47,7 @@ int main(){
         _WriteCharToFile(checkFile, '1');
         fclose(checkFile);
         checkFile = NULL;
+        isCryptoGenerated = _IsCurrencyGenerated();
         
     }else{
         printf("\nAlready generated\n");
@@ -60,11 +56,12 @@ int main(){
     
     //stats loop
     while(1){
-        //printf("\nisCryptoGenerated: %c\n", isCryptoGenerated);
+        _InitializeCurrencies(currency);
+        _DisplayCurrencies(currency);
+        //Initialize cryptocurrencies from files
         //display stats of every currency
-        //change values every few secs
+        //currency values change every few secs
         //graphs
-        //printf("\nloop");
         break;
     }
 
