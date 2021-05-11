@@ -22,6 +22,9 @@
     //initialize already created currencies
     void _InitializeCurrencies(CRYPTOCURRENCY*);
 
+    //random value change
+    void _ValueChange(CRYPTOCURRENCY*);
+
     
 
 #endif

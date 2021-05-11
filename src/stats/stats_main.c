@@ -9,17 +9,17 @@
 
 int main(){
     system("cls");
-    printf("STATS WINDOW\n\n");
+    printf("STATS\n\n");
 
     srand((unsigned)time(NULL));
 
     int isCryptoGenerated = 0;
     int numberOfCurrencies = 5;
+    int isStatsRunning = 0;
 
-
-    //read from txt file and store that value to isCryptoGenerated
+    //read value from txt file (0 or 1) and store that value to isCryptoGenerated
     isCryptoGenerated = _IsCurrencyGenerated();
-
+    isStatsRunning = isCryptoGenerated;
 
     //memory allocation
     CRYPTOCURRENCY *currency;
@@ -43,31 +43,49 @@ int main(){
             printf("\nERROR: openning file isCryptoGenerated.txt\n");
             return 1;
         }
-
         _WriteCharToFile(checkFile, '1');
         fclose(checkFile);
         checkFile = NULL;
+
         isCryptoGenerated = _IsCurrencyGenerated();
-        
+        isStatsRunning = isCryptoGenerated; //set isStatsRunning  to 1
+
+        printf("\nCurrencies generated\n");
+        Sleep(1000);
     }else{
-        printf("\nAlready generated\n");
+        printf("\nCurrencies already generated. \nInitializing currencies from files\n");
+        //Initialize cryptocurrencies from files
+        _InitializeCurrencies(currency);
+        Sleep(1000);
     }
     
-    
+    system("cls");
     //stats loop
-    while(1){
-        _InitializeCurrencies(currency);
-        _DisplayCurrencies(currency);
-        //Initialize cryptocurrencies from files
+    while(isStatsRunning == 1){
+        _setCursorPosition();
+        
+
+        printf("STATS\n\n");
+
         //display stats of every currency
+        _DisplayCurrencies(currency);
+        Sleep(1000);
+        
+        //randomly change currency values and save those values to files
+        _ValueChange(currency);
+        _SaveCurrenciesToFiles(currency);
+
         //currency values change every few secs
+
         //graphs
-        break;
+        //break;
+        
     }
 
     
     _FreeMemory(currency);
     currency = NULL;
+    printf("\n\n\n");
     //system("PAUSE");
     return 0;
 }

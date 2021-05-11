@@ -3,5 +3,5 @@
 #define GENERAL_TOOLS_H
 
     void _WriteCharToFile(FILE*, char);
-    
+    BOOL _setCursorPosition();
 #endif

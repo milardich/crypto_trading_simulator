@@ -99,7 +99,7 @@ void _GenerateCurrencies(CRYPTOCURRENCY *currency){
 
 void _DisplayCurrencies(CRYPTOCURRENCY *currency){
     int i = 0, j = 0;
-    printf("\nCurrencies generated.\n");
+
     for(i = 0; i < 5; i++){
         printf("\n$%s: ", (currency + i)->name);
         printf("%.2f", (currency + i)->startValue);
@@ -133,7 +133,7 @@ void _SaveCurrenciesToFiles(CRYPTOCURRENCY *currency){
 
 
         //write all curencies to all_currencies_file, so all currencies 
-        //can stored in a variable if they are already created
+        //can be stored in a variable if they are already created
         fprintf(all_currencies_file, "%s\n", (currency + i)->name);
     }
 
@@ -195,4 +195,19 @@ void _InitializeCurrencies(CRYPTOCURRENCY *currency){
     
     //currencyFileName = NULL;
     fclose(allCurrenciesFile);
+}
+
+
+
+
+
+//=====================================//
+// Random currency value change
+//=====================================//
+
+void _ValueChange(CRYPTOCURRENCY *currency){
+    int i = 0;
+    for(i = 0; i < 5; i++){
+        (currency + i)->startValue = 1 + (float)rand() / RAND_MAX * (1000 - 300);
+    }
 }
