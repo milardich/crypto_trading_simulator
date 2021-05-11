@@ -204,10 +204,37 @@ void _InitializeCurrencies(CRYPTOCURRENCY *currency){
 //=====================================//
 // Random currency value change
 //=====================================//
-
+/*
+TODO: value increment and decrement
+ -increment/decrement gets random value
+ -currency value + or - that increment/decrement
+*/
 void _ValueChange(CRYPTOCURRENCY *currency){
     int i = 0;
+
+    float increment = 0;
+    float decrement = 0;
+    float change = 0;
+
+    int randBool; 
+
+
     for(i = 0; i < 5; i++){
-        (currency + i)->startValue = 1 + (float)rand() / RAND_MAX * (1000 - 300);
+
+        randBool = rand() % 2;
+        if(randBool == 1){
+            increment = 1 + (float)rand() / RAND_MAX * (20 - 1);
+            change = increment;
+        }else{
+            decrement = 1 + (float)rand() / RAND_MAX * (20 - 1);
+            change = -decrement;
+        }
+
+        //(currency + i)->startValue = 1 + (float)rand() / RAND_MAX * (1000 - 300);
+        (currency + i)->startValue += change;
+        if((currency + i)->startValue <= 0){
+            (currency + i)->startValue = 0.0;
+        }
     }
+    
 }

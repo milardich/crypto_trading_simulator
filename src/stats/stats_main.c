@@ -70,7 +70,7 @@ int main(){
         //display stats of every currency
         _DisplayCurrencies(currency);
         Sleep(1000);
-        
+
         //randomly change currency values and save those values to files
         _ValueChange(currency);
         _SaveCurrenciesToFiles(currency);
