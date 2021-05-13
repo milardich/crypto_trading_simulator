@@ -4,16 +4,6 @@
 #include "control_header.h"
 
 int main(){
-    /*
-    FILE * userMoneyAmount = fopen("../out/files/usermoney.txt", "w");
-    if(userMoneyAmount == NULL){
-        printf("Could not open usermoney.txt file");
-        return 1;
-    }
-    fclose(userMoneyAmount);
-    */
-
-    //
 
     char input[10];
 
