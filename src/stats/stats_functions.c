@@ -238,3 +238,40 @@ void _ValueChange(CRYPTOCURRENCY *currency){
     }
     
 }
+
+
+
+
+
+//=====================================//
+// Graphs
+//=====================================//
+
+void _DrawGraph(CRYPTOCURRENCY *currency){
+    int i = 0;
+    int j = 0;
+    float maxValue = 0;
+    float minValue = 0; 
+    char emptySpot = '-';
+    int column[10];
+
+    printf("Tracking: $CRYPTO\n\n");
+
+    for(i = 0; i < 11; i++){
+
+        printf("\n");
+        
+        for(j = 0; j < 19; j++){
+            if(j == 0){
+                printf(" %2d ", 10 - i);
+            }
+            else if(i == 10){
+                //printf(" %2d ", j);
+                printf("____");
+            }
+            else{
+                printf(" %2c ", emptySpot);
+            }
+        }
+    }
+}

@@ -25,6 +25,8 @@
     //random value change
     void _ValueChange(CRYPTOCURRENCY*);
 
+    //graphs
+    void _DrawGraph(CRYPTOCURRENCY*);
     
 
 #endif

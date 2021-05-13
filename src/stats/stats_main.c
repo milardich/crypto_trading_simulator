@@ -9,7 +9,7 @@
 
 int main(){
     system("cls");
-    printf("STATS\n\n");
+    printf("STATS WINDOW\n\n");
 
     srand((unsigned)time(NULL));
 
@@ -62,24 +62,22 @@ int main(){
     system("cls");
     //stats loop
     while(isStatsRunning == 1){
-        _setCursorPosition();
-        
-
+        _setCursorPosition(); //set to beggining of the console to refresh screen with every loop cycle
         printf("STATS\n\n");
 
+        //graphs
+        _DrawGraph(currency);
+
+        
+
         //display stats of every currency
+        printf("\n\n");
         _DisplayCurrencies(currency);
         Sleep(1000);
 
         //randomly change currency values and save those values to files
         _ValueChange(currency);
         _SaveCurrenciesToFiles(currency);
-
-        //currency values change every few secs
-
-        //graphs
-        //break;
-        
     }
 
     

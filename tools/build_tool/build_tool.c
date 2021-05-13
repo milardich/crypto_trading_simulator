@@ -6,7 +6,7 @@ int main(){
     system("gcc ../../src/menu/*.c -o ../../out/menu");
     printf("menu built\n");
 
-    system("gcc ../../src/control/*.c -o ../../out/control");
+    system("gcc ../../src/control/*.c ../../src/stats/stats_functions.c -o ../../out/control");
     printf("control built\n");
 
     system("gcc ../../src/portfolio/*.c -o ../../out/portfolio");
