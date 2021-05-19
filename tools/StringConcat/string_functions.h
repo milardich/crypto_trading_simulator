@@ -1,4 +1,4 @@
-#include "string_concat.c"
+//#include "string_concat.c"
 #ifndef STRING_FUNCTIONS_H
 #define STRING_FUNCTIONS_H
 

@@ -3,8 +3,8 @@
 #include<string.h>
 #include<time.h>
 
-#include "../../tools/StringConcat/string_functions.h"
 #include "stats_header.h"
+#include "../../tools/StringConcat/string_functions.h"
 
 
 void test_Stats(){
@@ -17,7 +17,7 @@ void test_Stats(){
 //=====================================//
 
 int _IsCurrencyGenerated(){
-
+    
     FILE * checkFile = fopen("../out/files/cryptogeneratedstatus.txt", "r");
     if(checkFile == NULL){
         printf("\nERROR: openning file isCryptoGenerated.txt\n");

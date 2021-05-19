@@ -108,6 +108,7 @@ void _BuyCurrency(char currencyChoice[3], float amount, int method){
 
     //add amount of new currency to portfolio
     
+    
 
 
     //printf("TRANSACTION COMPLETE: ");

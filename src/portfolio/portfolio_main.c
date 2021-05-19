@@ -2,9 +2,10 @@
 #include<stdlib.h>
 #include<windows.h>
 #include "portfolio_header.h"
-//#include "../stats/stats_header.h"
+//#include "../../tools/general_tools/general_tools.h"
 
 int main(){
+    system("cls");
     printf("PORTFOLIO WINDOW\n\n");
     
     //initialize portfolio
@@ -16,10 +17,18 @@ int main(){
     }
 
     _InitializeCurrencies(currency);
-    _InitializePortfolio(currency);
 
-    //read amount of owned currency
+    float currencyAmountInPortfolio[5] = {0};
+    _InitializePortfolio(currency, currencyAmountInPortfolio);
 
+    while(1){
+        _setCursorPosition();
+
+        //read amount of owned currency
+        _DisplayPortfolio(currency, currencyAmountInPortfolio);
+        Sleep(1000);
+    }
+    
 
 
     free(currency);
