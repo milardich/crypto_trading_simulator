@@ -1,0 +1,2 @@
+Transaction 0: Exchanged 814.29999 of FIAT currency for 2.50000 DAH
+Transaction 0: Exchanged 321.00000 of FIAT currency for 0.27733 LXU

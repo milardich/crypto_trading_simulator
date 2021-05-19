@@ -9,7 +9,7 @@ int main(){
     system("gcc ../../src/control/*.c ../../src/stats/stats_functions.c -o ../../out/control");
     printf("control built\n");
 
-    system("gcc ../../src/portfolio/*.c -o ../../out/portfolio");
+    system("gcc ../../src/portfolio/*.c ../../src/stats/stats_functions.c ../StringConcat/string_concat.c -o ../../out/portfolio");
     printf("portfolio built\n");
 
     system("gcc ../../src/stats/*.c -o ../../out/stats");
