@@ -73,7 +73,7 @@ int main(){
         //display stats of every currency
         printf("\n\n");
         _DisplayCurrencies(currency);
-        Sleep(10000);
+        Sleep(3000);
 
         //randomly change currency values and save those values to files
         _ValueChange(currency);

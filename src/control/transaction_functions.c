@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include "../stats/stats_header.h"
+#include "../portfolio/portfolio_header.h"
 
 void _LogTransaction(char currencyChoice[3], float full_currency_price, int transactionComplete, float wallet_amount, float amount_of_currency){
     /*
@@ -95,9 +96,11 @@ void _BuyCurrency(char currencyChoice[3], float amount, int method){
     if(full_currency_price <= wallet_amount){
         transactionComplete = 1;
         wallet_amount -= full_currency_price;
+        _AddAmountToPortfolio(currency, currencyChoice, amount_of_currency);
         fprintf(wallet, "%f", wallet_amount);
     }else{
         transactionComplete = 0;
+        fprintf(wallet, "%f", wallet_amount);
         printf("\nERROR: not enough fiat money in the wallet\n");
     }
     fclose(wallet);
@@ -107,6 +110,13 @@ void _BuyCurrency(char currencyChoice[3], float amount, int method){
     _LogTransaction(currencyChoice, full_currency_price, transactionComplete, wallet_amount, amount_of_currency);
 
     //add amount of new currency to portfolio
+    /*
+    if(transactionComplete == 1){
+        _AddAmountToPortfolio(currency, currencyChoice, amount_of_currency);
+    }else{
+        printf("\nCould not add currency to portfolio\n");
+    }
+    */
     
     
 

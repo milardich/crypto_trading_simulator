@@ -1,4 +1,5 @@
-#include "general_tools.c"
+//#include "general_tools.c"
+#include<windows.h>
 #ifndef GENERAL_TOOLS_H
 #define GENERAL_TOOLS_H
 

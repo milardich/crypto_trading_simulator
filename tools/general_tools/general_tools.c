@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<windows.h>
-//#include "general_tools.h"
+#include "general_tools.h"
 
 //general write char to file function
 void _WriteCharToFile(FILE *file, char c){

@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<windows.h>
 #include "portfolio_header.h"
-//#include "../../tools/general_tools/general_tools.h"
+#include "../../tools/general_tools/general_tools.h"
 
 int main(){
     system("cls");
@@ -20,11 +20,19 @@ int main(){
 
     float currencyAmountInPortfolio[5] = {0};
     _InitializePortfolio(currency, currencyAmountInPortfolio);
+    Sleep(2000);
+    system("cls");
 
     while(1){
         _setCursorPosition();
+        printf("PORTFOLIO WINDOW\n\n");
+
+        //show amount of FIAT currency from wallet
 
         //read amount of owned currency
+        _ReadCurrencyAmounts(currency, currencyAmountInPortfolio);
+
+        //display currencies
         _DisplayPortfolio(currency, currencyAmountInPortfolio);
         Sleep(1000);
     }
