@@ -37,7 +37,7 @@ void _LogTransaction(int typeOfTransaction, char currencyChoice[3], float full_c
         
     }
 
-    printf("\n\nNew wallet balance: %f\n", wallet_amount);
+    printf("\nNew wallet balance: %f\n", wallet_amount);
     fclose(transaction_file);
 }
 
@@ -175,10 +175,10 @@ void _SellCurrency(char currencyChoice[3], float amount, int method){
     }
     
 
-    
+    /*
     printf("\n\n->>>>>>>>>FULL CURRENCY PRICE: %.5f", full_currency_price);
     printf("\n->>>>>>>>>AMOUNT OF CURRENCY TO BE SOLD: %.5f\n\n", amount_of_currency);
-    
+    */
     
     //subtract money from fiat wallet
     //read from wallet

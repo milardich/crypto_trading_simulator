@@ -42,3 +42,5 @@ Transaction 0: (SELL)Exchanged 100.00000 of FIAT currency for 0.16671 BKO
 Transaction 0: (SELL)Exchanged 960.67505 of FIAT currency for 1.50000 LTF
 Transaction 0: (SELL)Exchanged 10360.98047 of FIAT currency for 7.00000 LXU
 Transaction 0: (SELL)Exchanged 101.00000 of FIAT currency for 0.06971 LXU
+Transaction 0: (SELL)Exchanged 1500.00000 of FIAT currency for 0.95305 LXU
+Transaction 0: (SELL)Exchanged 148677.21875 of FIAT currency for 99.00000 LXU

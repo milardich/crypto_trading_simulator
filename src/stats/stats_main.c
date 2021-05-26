@@ -63,7 +63,12 @@ int main(){
     //stats loop
     while(isStatsRunning == 1){
         _setCursorPosition(); //set to beggining of the console to refresh screen with every loop cycle
-        printf("STATS\n\n");
+        printf("  ____ _____  _  _____ ____  \n");
+        printf(" / ___|_   _|/ \\|_   _/ ___| \n");
+        printf(" \\___ \\ | | / _ \\ | | \\___ \\ \n");
+        printf("  ___) || |/ ___ \\| |  ___) |\n");
+        printf(" |____/ |_/_/   \\_\\_| |____/ \n\n");
+        printf(" ----------------------------- \n");
 
         //graphs
         _DrawGraph(currency);

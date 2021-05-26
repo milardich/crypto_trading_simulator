@@ -130,7 +130,7 @@ void _DisplayPortfolio(CRYPTOCURRENCY *currency, float currencyAmountInPortfolio
     }
 
     for(i = 0; i < 5; i++){
-        printf("$%s: %.5f (%.5f in FIAT)\n", (currency + i)->name, currencyAmountInPortfolio[i], currencyAmountInPortfolio[i] * (currency + i)->startValue);
+        printf(" $%s: %.5f (%.5f in FIAT)\n", (currency + i)->name, currencyAmountInPortfolio[i], currencyAmountInPortfolio[i] * (currency + i)->startValue);
     }
 } 
 
