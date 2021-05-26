@@ -71,7 +71,26 @@ void _ProcessCommand(char command[20]){
         _BuyCurrency(currencyChoice, amount, method);
 
     }else if(strcmp(command, SELL_COMMAND) == 0){
-        printf("\nSellin :)\n");
+        printf("Choose a currency you want to sell (currency-amount-method)\n");
+
+        //keep entering again if it doesnt exist
+        do{
+            printf(">>");
+            scanf("%s %f", currencyChoice, &amount);
+            //currencyExists = _CurrencyExists(currencyChoice);
+        }while(currencyExists == 1);
+        
+        //purchase method
+        printf("\n1. Sell %f %s\n", amount, currencyChoice);
+        printf("2. Sell %f worth of %s\n", amount, currencyChoice);
+        do{
+            printf("\n>>>>");
+            scanf("%d", &method);
+        }while(method != 1 && method != 2);
+
+        //buy the currency
+        _SellCurrency(currencyChoice, amount, method);
+
     }else{
         printf("ERROR");
     }

@@ -132,7 +132,7 @@ void _DisplayPortfolio(CRYPTOCURRENCY *currency, float currencyAmountInPortfolio
     for(i = 0; i < 5; i++){
         printf("$%s: %.5f (%.5f in FIAT)\n", (currency + i)->name, currencyAmountInPortfolio[i], currencyAmountInPortfolio[i] * (currency + i)->startValue);
     }
-}
+} 
 
 void _AddAmountToPortfolio(CRYPTOCURRENCY *currency, char currencyChoice[3], float amount_of_currency){
     //select currency with matching name
@@ -174,4 +174,70 @@ void _AddAmountToPortfolio(CRYPTOCURRENCY *currency, char currencyChoice[3], flo
     fprintf(file, "%f", newAmount);
     fclose(file);
     free(filename);
+}
+
+
+
+void _SubtractAmountFromPortfolio(CRYPTOCURRENCY *currency, char currencyChoice[3], float amount_of_currency){
+    //select currency with matching name
+    int i = 0;
+    for(i = 0; i < 5; i++){
+        if(strcmp((currency + i)->name, currencyChoice) == 0){
+            break;
+        }
+    }
+
+    char *filename;
+    float oldAmount = 0;
+    float newAmount = 0;
+
+    //get file name for chosen currency
+    filename = concat(3, "portfolio/", currencyChoice, "_amount.txt");
+    if(filename == NULL){
+        printf("\nFile %s doesnt exist\n", currencyChoice);
+    }
+    //printf("\nDEBUG:: filename: %s\n", filename);
+    
+    //open file and subtract old and sold value together
+    FILE *file = fopen(filename, "r");
+    if(file == NULL){
+        printf("\nERROR: could not open file\n");
+        return;
+    }
+
+    fscanf(file, "%f", &oldAmount);
+    fclose(file);
+
+    newAmount = oldAmount - amount_of_currency;
+
+    
+    file = fopen(filename, "w");
+    if(file == NULL){
+        printf("\nERROR: could not open file\n");
+        return;
+    }
+    fprintf(file, "%.5f", newAmount);
+    fclose(file);
+
+    
+    free(filename);
+}
+
+
+
+//show fiat wallet amount
+void _ShowFiatWalletAmount(){
+
+    float amount = 0;
+
+    FILE *walletfile = fopen("files/fiat_wallet.txt", "r");
+    if(walletfile == NULL){
+        printf("\nERROR: Could not open file fiat_wallet.txt\n");
+        return;
+    }
+
+    fscanf(walletfile, "%f", &amount);
+    fclose(walletfile);
+
+    printf("FIAT Wallet: %.5f\n\n", amount);
 }

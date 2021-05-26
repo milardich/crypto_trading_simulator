@@ -28,6 +28,7 @@ int main(){
         printf("PORTFOLIO WINDOW\n\n");
 
         //show amount of FIAT currency from wallet
+        _ShowFiatWalletAmount();
 
         //read amount of owned currency
         _ReadCurrencyAmounts(currency, currencyAmountInPortfolio);

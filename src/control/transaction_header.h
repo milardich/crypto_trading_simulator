@@ -5,11 +5,10 @@
     void _BuyCurrency(char[3], float, int);
 
     //log transactions 
-    void _LogTransaction(char[3], float, int, float, float);
-
-    //save transactions to portfolio
+    void _LogTransaction(int, char[3], float, int, float, float);
 
     //Sell
+    void _SellCurrency(char[3], float, int);
 
     //Track currency (track graph)
     //Track random every few secs
