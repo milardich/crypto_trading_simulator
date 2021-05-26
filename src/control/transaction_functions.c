@@ -27,7 +27,14 @@ void _LogTransaction(int typeOfTransaction, char currencyChoice[3], float full_c
         }
         
     }else{
-        printf("\nInsufficient amount of fiat currency in the wallet\n");
+        if(typeOfTransaction == 1){
+            printf("\nInsufficient amount of fiat currency in the wallet\n");
+        }else if(typeOfTransaction == 2){
+            printf("\nInsufficient amount of crypto currency in portfolio\n");
+        }else{
+            printf("\nTRANSACTION ERROR\n");
+        }
+        
     }
 
     printf("\n\nNew wallet balance: %f\n", wallet_amount);
@@ -174,10 +181,15 @@ void _SellCurrency(char currencyChoice[3], float amount, int method){
     
     
     //subtract money from fiat wallet
-    wallet = fopen("../out/files/fiat_wallet.txt", "w");
+    //read from wallet
+    wallet = fopen("../out/files/fiat_wallet.txt", "r");
     if(wallet == NULL){
         return;
     }
+    fscanf(wallet, "%f", &wallet_amount);
+    fclose(wallet);
+
+    
 
     //get file name for chosen currency
     float oldAmount = 0;
@@ -198,20 +210,21 @@ void _SellCurrency(char currencyChoice[3], float amount, int method){
     newAmount = oldAmount - amount_of_currency;
 
     if(amount_of_currency > 0 && amount_of_currency <= oldAmount){
+        //open wallet for writing
+        wallet = fopen("../out/files/fiat_wallet.txt", "w");
+        if(wallet == NULL){
+            return;
+        }
         transactionComplete = 1;
         wallet_amount += full_currency_price;
         _SubtractAmountFromPortfolio(currency, currencyChoice, amount_of_currency);
         fprintf(wallet, "%f", wallet_amount);
+        fclose(wallet);
     }else{
         printf("\nERROR: you do not own %.5f of %s\n", amount_of_currency, currencyChoice);
     }    
 
     
-
-    //transactionComplete = 1;
-    //fprintf(wallet, "%f", wallet_amount);
-    
-    fclose(wallet);
 
 
     //log transactions

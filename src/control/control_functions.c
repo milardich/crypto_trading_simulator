@@ -5,11 +5,18 @@
 #include "transaction_header.h"
 
 void _DisplayCommands(){
-    printf("---------------\n");
-    printf("buy $currency\n");
-    printf("sell $currency\n");
-    printf("track $currency\n");
-    printf("---------------\n");
+    printf("   ____ ___  __  __ __  __    _    _   _ ____  ____  \n");
+    printf("  / ___/ _ \\|  \\/  |  \\/  |  / \\  | \\ | |  _ \\/ ___| \n");
+    printf(" | |  | | | | |\\/| | |\\/| | / _ \\ |  \\| | | | \\___ \\ \n");
+    printf(" | |__| |_| | |  | | |  | |/ ___ \\| |\\  | |_| |___) |\n");
+    printf("  \\____\\___/|_|  |_|_|  |_/_/   \\_\\_| \\_|____/|____/ \n");
+    printf("\n");
+    printf("----------------\n");
+    printf("-buy\n");
+    printf("-sell\n");
+    printf("-transactions\n");
+    printf("-track\n");
+    printf("----------------\n");
 }
 
 

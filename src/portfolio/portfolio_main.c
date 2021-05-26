@@ -25,7 +25,13 @@ int main(){
 
     while(1){
         _setCursorPosition();
-        printf("PORTFOLIO WINDOW\n\n");
+        printf("  ____   ___  ____ _____ _____ ___  _     ___ ___  \n");
+        printf(" |  _ \\ / _ \\|  _ \\_   _|  ___/ _ \\| |   |_ _/ _ \\ \n");
+        printf(" | |_) | | | | |_) || | | |_ | | | | |    | | | | |\n");
+        printf(" |  __/| |_| |  _ < | | |  _|| |_| | |___ | | |_| |\n");
+        printf(" |_|    \\___/|_| \\_\\|_| |_|   \\___/|_____|___\\___/ \n\n");
+        printf(" --------------------------------------------------\n");
+
 
         //show amount of FIAT currency from wallet
         _ShowFiatWalletAmount();
