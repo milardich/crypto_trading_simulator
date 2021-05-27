@@ -11,12 +11,12 @@ void _DisplayCommands(){
     printf(" | |__| |_| | |  | | |  | |/ ___ \\| |\\  | |_| |___) |\n");
     printf("  \\____\\___/|_|  |_|_|  |_/_/   \\_\\_| \\_|____/|____/ \n");
     printf("\n");
-    printf("----------------\n");
-    printf("-buy\n");
-    printf("-sell\n");
-    printf("-transactions\n");
-    printf("-track\n");
-    printf("----------------\n");
+    printf(" ----------------\n");
+    printf(" -> buy\n");
+    printf(" -> sell\n");
+    printf(" -> transactions\n");
+    printf(" -> track\n");
+    printf(" ----------------\n");
 }
 
 
@@ -45,7 +45,7 @@ int _IsCommandValid(char inputCommand[20]){
 
 void _CommandInput(char input[20]){
     do{
-        printf(">");
+        printf(":> ");
         scanf("%s", input);
     }while(_IsCommandValid(input) != 1);
 }
@@ -60,20 +60,23 @@ void _ProcessCommand(char command[20]){
 
     //buy
     if(strcmp(command, BUY_COMMAND) == 0){
-        printf("Choose a currency you want to buy (currency-amount-method)\n");
+        printf("\n Choose a currency you want to buy (currency->amount->method)\n");
         
         //keep entering again if it doesnt exist
         do{
-            printf(">>");
-            scanf("%s %f", currencyChoice, &amount);
+            printf(":> currency: ");
+            scanf("%s", currencyChoice);
+            printf(":> amount: ");
+            scanf("%f", &amount);
             //currencyExists = _CurrencyExists(currencyChoice);
         }while(currencyExists == 1);
         
         //purchase method
-        printf("\n1. Buy %f %s\n", amount, currencyChoice);
-        printf("2. Buy %f worth of %s\n", amount, currencyChoice);
+        printf("\n 1. Buy %f %s\n", amount, currencyChoice);
+        printf(" 2. Buy %f worth of %s\n", amount, currencyChoice);
+        printf(" 3. Buy MAX amount of %s", currencyChoice);
         do{
-            printf("\n>>>>");
+            printf("\n:> method: ");
             scanf("%d", &method);
         }while(method != 1 && method != 2);
 
@@ -81,36 +84,36 @@ void _ProcessCommand(char command[20]){
         _BuyCurrency(currencyChoice, amount, method);
 
     }else if(strcmp(command, SELL_COMMAND) == 0){
-        printf("Choose a currency you want to sell (currency-amount-method)\n");
+        printf("\n Choose a currency you want to sell (currency->amount->method)\n");
 
         //keep entering again if it doesnt exist
         do{
-            printf("currency>>");
+            printf(":> currency: ");
             scanf("%s", currencyChoice);
-            printf("amount>>");
+            printf(":> amount: ");
             scanf("%f", &amount);
             //currencyExists = _CurrencyExists(currencyChoice);
         }while(currencyExists == 1);
         
-        //purchase method
-        printf("\n1. Sell %f %s\n", amount, currencyChoice);
-        printf("2. Sell %f worth of %s\n", amount, currencyChoice);
-        printf("3. Sell all %s\n", currencyChoice);
+        //sell method
+        printf("\n 1. Sell %f %s\n", amount, currencyChoice);
+        printf(" 2. Sell %f worth of %s\n", amount, currencyChoice);
+        printf(" 3. Sell all %s\n", currencyChoice);
         do{
-            printf("\n>>>>");
+            printf("\n:> method: ");
             scanf("%d", &method);
         }while(method != 1 && method != 2 && method != 3);
 
-        //buy the currency
+        //sell the currency
         _SellCurrency(currencyChoice, amount, method);
 
     }else if(strcmp(command, TRACK_COMMAND) == 0){
         printf("\ntrackin\n");
     }else if(strcmp(command, TRANSACTIONS_COMMAND) == 0){
-        printf("\ntransactions\n");
+        //printf("\ntransactions\n");
         _DisplayTransactions();
     }else{
-        printf("\nasdf\n");
+        printf("\nERROR: Unknown command\n");
     }
 }
 

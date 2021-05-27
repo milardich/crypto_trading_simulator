@@ -8,3 +8,11 @@ Transaction 5: (SELL)Exchanged 500.00000 of FIAT currency for 0.56026 LXU
 Transaction 6: (BUY)Exchanged 1369.12000 of FIAT currency for 1.00000 BKO
 Transaction 7: (SELL)Exchanged 1389.78174 of FIAT currency for 1.36651 LXU
 >>>>>>> Stashed changes
+Transaction 2: (BUY)Exchanged 115.54500 of FIAT currency for 1.50000 YJX
+Transaction 3: (SELL)Exchanged 255.55200 of FIAT currency for 11.61600 DAH
+Transaction 4: (BUY)Exchanged 3000.00000 of FIAT currency for 12.81121 LXU
+Transaction 5: (BUY)Exchanged 5000.00000 of FIAT currency for 253.42119 DAH
+Transaction 6: (BUY)Exchanged 166.20001 of FIAT currency for 5.00000 LTF
+Transaction 7: (SELL)Exchanged 36.57000 of FIAT currency for 3.00000 LTF
+Transaction 8: (SELL)Exchanged 1551.50000 of FIAT currency for 50.00000 DAH
+Transaction 9: (SELL)Exchanged 86.85900 of FIAT currency for 0.30000 BKO

@@ -101,7 +101,7 @@ void _DisplayCurrencies(CRYPTOCURRENCY *currency){
     int i = 0, j = 0;
 
     for(i = 0; i < 5; i++){
-        printf("\n$%s: ", (currency + i)->name);
+        printf("\n $%s: ", (currency + i)->name);
         printf("%.2f", (currency + i)->startValue);
     }
 }
