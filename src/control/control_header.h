@@ -3,6 +3,8 @@
 
     #define BUY_COMMAND "buy"
     #define SELL_COMMAND "sell"
+    #define TRACK_COMMAND "track"
+    #define TRANSACTIONS_COMMAND "transactions"
     
     //show commands
     void _DisplayCommands();

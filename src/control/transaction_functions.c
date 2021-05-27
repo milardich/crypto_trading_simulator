@@ -7,6 +7,25 @@
 
 void _LogTransaction(int typeOfTransaction, char currencyChoice[3], float full_currency_price, int transactionComplete, float wallet_amount, float amount_of_currency){
 
+    //initialize and increment number of transactions 
+    int numberOfTransactions = 0;
+    FILE *number_of_transactions_file = fopen("files/number_of_transactions.txt", "r");
+    if(number_of_transactions_file == NULL){
+        printf("\nERROR: number of transactions file\n");
+        return;
+    }
+    fscanf(number_of_transactions_file, "%d", &numberOfTransactions);
+    fclose(number_of_transactions_file);
+
+    numberOfTransactions++;
+    number_of_transactions_file = fopen("files/number_of_transactions.txt", "w");
+    if(number_of_transactions_file == NULL){
+        printf("\nERROR: number of transactions file\n");
+        return;
+    }
+    fprintf(number_of_transactions_file, "%d", numberOfTransactions);
+    fclose(number_of_transactions_file);
+
     //write transaction to file    
     FILE * transaction_file = fopen("../out/files/transactions.txt", "a");
     if(transaction_file == NULL){
@@ -19,11 +38,11 @@ void _LogTransaction(int typeOfTransaction, char currencyChoice[3], float full_c
     if(transactionComplete == 1){
         printf("\nTRANSACTION COMPLETE\n");
         if(typeOfTransaction == 1){
-            fprintf(transaction_file, "Transaction %d: (BUY)Exchanged %.5f of FIAT currency for %.5f %s\n", 0, full_currency_price, amount_of_currency, currencyChoice);
-            printf("\nBought %.5f worth of %s (%.5f)", full_currency_price, currencyChoice, amount_of_currency);
+            fprintf(transaction_file, "Transaction %d: (BUY)Exchanged %.5f of FIAT currency for %.5f %s\n", numberOfTransactions, full_currency_price, amount_of_currency, currencyChoice);
+            printf("\nTransaction %d: Bought %.5f worth of %s (%.5f)",numberOfTransactions, full_currency_price, currencyChoice, amount_of_currency);
         }else{
-            fprintf(transaction_file, "Transaction %d: (SELL)Exchanged %.5f of FIAT currency for %.5f %s\n", 0, full_currency_price, amount_of_currency, currencyChoice);
-            printf("\nSold %.5f worth of %s (%.5f)", full_currency_price, currencyChoice, amount_of_currency);
+            fprintf(transaction_file, "Transaction %d: (SELL)Exchanged %.5f of FIAT currency for %.5f %s\n", numberOfTransactions, full_currency_price, amount_of_currency, currencyChoice);
+            printf("\nTransaction %d: Sold %.5f worth of %s (%.5f)",numberOfTransactions, full_currency_price, currencyChoice, amount_of_currency);
         }
         
     }else{
@@ -134,6 +153,11 @@ void _SellCurrency(char currencyChoice[3], float amount, int method){
     int transactionComplete = 0;
     int typeOfTransaction = 2;
 
+    float maxAmountOfCrypto = 0;
+
+    float oldAmount = 0;
+    float newAmount = 0;
+
     //initialize currencies
     CRYPTOCURRENCY *currency;
     currency = _Allocate(5);
@@ -163,15 +187,35 @@ void _SellCurrency(char currencyChoice[3], float amount, int method){
     printf("\nOld wallet balance: %f\n", wallet_amount);
     fclose(wallet);
 
+    //initialize crypto amount of chosen currency from portfolio
+    char *filename = concat(3, "portfolio/", currencyChoice, "_amount.txt");
+    if(filename == NULL){
+        printf("\nFile %s doesnt exist\n", currencyChoice);
+    }
+    FILE *portfolio_amount_file = fopen(filename, "r");
+    if(portfolio_amount_file == NULL){
+        printf("\nERROR: couldnt open file %s\n", filename);
+        return;
+    }
+    fscanf(portfolio_amount_file, "%f", &oldAmount);
+    fclose(portfolio_amount_file);
+
+
     //logic 
     if(method == 1){
         //1. Sell 32.513000 BTC
         full_currency_price = (currency + i)->startValue * amount;
         amount_of_currency = amount;
-    }else{
+    }else if(method == 2){
         //2. Sell 32.513000 worth of BTC
         full_currency_price = amount;
         amount_of_currency = amount / (currency + i)->startValue;
+    }else if(method == 3){
+        //3. Sell all BTC
+        full_currency_price = oldAmount * (currency + i)->startValue;
+        amount_of_currency = oldAmount;
+    }else{
+        printf("\nERROR: Unknown command\n");
     }
     
 
@@ -192,21 +236,6 @@ void _SellCurrency(char currencyChoice[3], float amount, int method){
     
 
     //get file name for chosen currency
-    float oldAmount = 0;
-    float newAmount = 0;
-
-    char *filename = concat(3, "portfolio/", currencyChoice, "_amount.txt");
-    if(filename == NULL){
-        printf("\nFile %s doesnt exist\n", currencyChoice);
-    }
-    FILE *portfolio_amount_file = fopen(filename, "r");
-    if(portfolio_amount_file == NULL){
-        printf("\nERROR: couldnt open file %s\n", filename);
-        return;
-    }
-    fscanf(portfolio_amount_file, "%f", &oldAmount);
-    fclose(portfolio_amount_file);
-
     newAmount = oldAmount - amount_of_currency;
 
     if(amount_of_currency > 0 && amount_of_currency <= oldAmount){
@@ -235,3 +264,78 @@ void _SellCurrency(char currencyChoice[3], float amount, int method){
     currency = NULL;    
 }
 
+void _DisplayTransactions(){
+    int character = -1;
+    int numberOfCharacters = 0;
+    char **transaction;
+    int i = 0, j = 0, numberOfTransactions = 0;
+
+    FILE *transactions_file = fopen("files/transactions.txt", "r");
+    if(transactions_file == NULL){
+        printf("\nERROR: transaction file");
+        return;
+    }
+
+    //count number of characters 
+    while((character = fgetc(transactions_file)) != EOF){
+        numberOfCharacters++;
+        if(character == '\n'){
+            numberOfTransactions++;
+        }
+    }
+    //printf("\nNumber of characters in transaction file: %d", numberOfCharacters);
+    //printf("\nNumber of transactions: %d", numberOfTransactions);
+    fclose(transactions_file);
+
+    //allocate char memory
+    transaction = (char**)calloc(numberOfTransactions, sizeof(char*));
+    if(transaction == NULL){
+        printf("\nERROR: transaction memory allocation\n");
+        return;
+    }
+
+    for(i = 0; i < numberOfTransactions; i++){
+        transaction[i] = (char*)calloc(numberOfCharacters + 1, sizeof(char));
+        if(transaction[i] == NULL){
+            printf("\nERROR: transaction memory allocation\n");
+            return;
+        }
+    }
+ 
+    transactions_file = fopen("files/transactions.txt", "r");
+    if(transactions_file == NULL){
+        printf("\nERROR: transaction file");
+        return;
+    }
+    //initialize transactions from file
+    i = 0;
+    for(i = 0; i < numberOfTransactions; i++){
+        while((character = fgetc(transactions_file)) != EOF){
+            //printf("\nDEBUG: Character: %c", character);
+            if(character == '\n'){
+                break;
+            }else{
+                transaction[i][j] = character;
+                j++;    
+            }
+        }
+        j = 0;
+    }
+    
+        
+
+    //printf transactions
+    for(i = 0; i < numberOfTransactions; i++){
+        printf("\n%s", transaction[i]);
+    }
+    
+
+    //free memory
+    for(i = 0; i < numberOfTransactions; i++){
+        free(transaction[i]);
+    }
+    free(transaction);
+    transaction = NULL;
+
+    fclose(transactions_file);
+}
