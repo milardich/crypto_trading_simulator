@@ -30,7 +30,10 @@ int _IsCommandValid(char inputCommand[20]){
     
     if(
         strcmp(inputCommand, BUY_COMMAND) == 0 ||
-        strcmp(inputCommand, SELL_COMMAND) == 0){
+        strcmp(inputCommand, SELL_COMMAND) == 0 ||
+        strcmp(inputCommand, TRACK_COMMAND) == 0 ||
+        strcmp(inputCommand, TRANSACTIONS_COMMAND) == 0
+    ){
 
         //printf("\nvalid commands\n");
         return 1;
@@ -98,8 +101,13 @@ void _ProcessCommand(char command[20]){
         //buy the currency
         _SellCurrency(currencyChoice, amount, method);
 
+    }else if(strcmp(command, TRACK_COMMAND) == 0){
+        printf("\ntrackin\n");
+    }else if(strcmp(command, TRANSACTIONS_COMMAND) == 0){
+        printf("\ntransactions\n");
+        _DisplayTransactions();
     }else{
-        printf("ERROR");
+        printf("\nasdf\n");
     }
 }
 
