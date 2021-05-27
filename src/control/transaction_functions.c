@@ -153,6 +153,11 @@ void _SellCurrency(char currencyChoice[3], float amount, int method){
     int transactionComplete = 0;
     int typeOfTransaction = 2;
 
+    float maxAmountOfCrypto = 0;
+
+    float oldAmount = 0;
+    float newAmount = 0;
+
     //initialize currencies
     CRYPTOCURRENCY *currency;
     currency = _Allocate(5);
@@ -182,15 +187,35 @@ void _SellCurrency(char currencyChoice[3], float amount, int method){
     printf("\nOld wallet balance: %f\n", wallet_amount);
     fclose(wallet);
 
+    //initialize crypto amount of chosen currency from portfolio
+    char *filename = concat(3, "portfolio/", currencyChoice, "_amount.txt");
+    if(filename == NULL){
+        printf("\nFile %s doesnt exist\n", currencyChoice);
+    }
+    FILE *portfolio_amount_file = fopen(filename, "r");
+    if(portfolio_amount_file == NULL){
+        printf("\nERROR: couldnt open file %s\n", filename);
+        return;
+    }
+    fscanf(portfolio_amount_file, "%f", &oldAmount);
+    fclose(portfolio_amount_file);
+
+
     //logic 
     if(method == 1){
         //1. Sell 32.513000 BTC
         full_currency_price = (currency + i)->startValue * amount;
         amount_of_currency = amount;
-    }else{
+    }else if(method == 2){
         //2. Sell 32.513000 worth of BTC
         full_currency_price = amount;
         amount_of_currency = amount / (currency + i)->startValue;
+    }else if(method == 3){
+        //3. Sell all BTC
+        full_currency_price = oldAmount * (currency + i)->startValue;
+        amount_of_currency = oldAmount;
+    }else{
+        printf("\nERROR: Unknown command\n");
     }
     
 
@@ -211,21 +236,6 @@ void _SellCurrency(char currencyChoice[3], float amount, int method){
     
 
     //get file name for chosen currency
-    float oldAmount = 0;
-    float newAmount = 0;
-
-    char *filename = concat(3, "portfolio/", currencyChoice, "_amount.txt");
-    if(filename == NULL){
-        printf("\nFile %s doesnt exist\n", currencyChoice);
-    }
-    FILE *portfolio_amount_file = fopen(filename, "r");
-    if(portfolio_amount_file == NULL){
-        printf("\nERROR: couldnt open file %s\n", filename);
-        return;
-    }
-    fscanf(portfolio_amount_file, "%f", &oldAmount);
-    fclose(portfolio_amount_file);
-
     newAmount = oldAmount - amount_of_currency;
 
     if(amount_of_currency > 0 && amount_of_currency <= oldAmount){

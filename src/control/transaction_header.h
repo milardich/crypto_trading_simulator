@@ -12,6 +12,7 @@
 
     //Sell
     void _SellCurrency(char[3], float, int);
+    //sell all
 
     //Track currency (track graph)
     //Track random every few secs

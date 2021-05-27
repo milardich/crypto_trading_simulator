@@ -3,3 +3,8 @@ Transaction 2: (SELL)Exchanged 1000.00000 of FIAT currency for 1.19652 LXU
 Transaction 3: (BUY)Exchanged 853.31000 of FIAT currency for 1.00000 LXU
 Transaction 4: (BUY)Exchanged 2123.80005 of FIAT currency for 1.00000 YJX
 Transaction 5: (SELL)Exchanged 500.00000 of FIAT currency for 0.56026 LXU
+<<<<<<< Updated upstream
+=======
+Transaction 6: (BUY)Exchanged 1369.12000 of FIAT currency for 1.00000 BKO
+Transaction 7: (SELL)Exchanged 1389.78174 of FIAT currency for 1.36651 LXU
+>>>>>>> Stashed changes
