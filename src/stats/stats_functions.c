@@ -251,26 +251,59 @@ void _DrawGraph(CRYPTOCURRENCY *currency){
     int i = 0;
     int j = 0;
     float maxValue = 0;
-    float minValue = 0; 
-    char emptySpot = '-';
-    int column[10];
+    float minValue = 0;
+    char statsArray[11][19];
+    float priceArray[5][5] = {0.0f};
 
-    printf("Tracking: $CRYPTO\n\n");
+    char currencyChoice[3] = {'\0'};
 
+    FILE * track_file = fopen("files/track_file.txt", "r");
+    if(track_file == NULL){
+        printf("\nERROR: %s\n", track_file);
+        return;
+    }
+    fscanf(track_file, "%s", currencyChoice);
+    fclose(track_file);
+
+    //select currency with matching name
+    for(i = 0; i < 5; i++){
+        if(strcmp((currency + i)->name, currencyChoice) == 0){
+            break;
+        }
+    }
+
+
+    printf("Tracking: $%s - current price: %.5f\n\n", (currency + i)->name, (currency + i)->startValue);
+
+    //initialize priceArray
+    for(i = 0; i < 5; i++){
+        for(j = 1; j < 19; j++){
+            priceArray[i][j] = (currency + i)->startValue;
+        }
+    }
+
+    //initialize statsArray
+    for(i = 0; i < 11; i++){
+        for(j = 0; j < 19; j++){
+            statsArray[i][j] = '-';
+        }
+    }
+
+    //draw graphs
     for(i = 0; i < 11; i++){
 
         printf("\n");
         
         for(j = 0; j < 19; j++){
             if(j == 0){
-                printf(" %2d ", 10 - i);
+                printf("%7d", 10 - i);
             }
             else if(i == 10){
                 //printf(" %2d ", j);
                 printf("____");
             }
             else{
-                printf(" %2c ", emptySpot);
+                printf(" %2c ", statsArray[i][j]);
             }
         }
     }
