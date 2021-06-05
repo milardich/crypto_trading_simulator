@@ -26,6 +26,19 @@ void _DisplayCommands(){
 //============================
 //  commands
 //============================
+
+//track command
+void _TrackCurrency(char currencyChoice[3]){
+    FILE * track_file = fopen("files/track_file.txt", "w");
+    if(track_file == NULL){
+        printf("\nERROR: %s\n", track_file);
+        return;
+    }
+    fprintf(track_file, "%s", currencyChoice);
+    printf("Tracking: %s", currencyChoice);
+    fclose(track_file);
+}
+
 int _IsCommandValid(char inputCommand[20]){
     
     if(
@@ -108,11 +121,22 @@ void _ProcessCommand(char command[20]){
         _SellCurrency(currencyChoice, amount, method);
 
     }else if(strcmp(command, TRACK_COMMAND) == 0){
-        printf("\ntrackin\n");
+        printf("\n Choose a currency you want to track\n");
+
+        //keep entering again if it doesnt exist
+        do{
+            printf(":> currency: ");
+            scanf("%s", currencyChoice);
+            //currencyExists = _CurrencyExists(currencyChoice);
+        }while(currencyExists == 1);
+        _TrackCurrency(currencyChoice);
+
     }else if(strcmp(command, TRANSACTIONS_COMMAND) == 0){
         //printf("\ntransactions\n");
         _DisplayTransactions();
-    }else{
+
+    }
+    else{
         printf("\nERROR: Unknown command\n");
     }
 }
