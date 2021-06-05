@@ -31,6 +31,3 @@ char* concat(int count, ...)
     return merged;
 }
 
-int TESTFUNCTION(){
-    return 0;
-};
