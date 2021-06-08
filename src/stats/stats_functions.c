@@ -38,8 +38,6 @@ int _IsCurrencyGenerated(){
 
 
 
-
-
 //=====================================//
 // Memory allocation for currencies
 //=====================================//
@@ -307,4 +305,40 @@ void _DrawGraph(CRYPTOCURRENCY *currency){
             }
         }
     }
+}
+
+
+
+int _DoesCurrencyExist(char currencyChoice[3]){
+    int exists = 0;
+    int i, j;
+
+    //initialize currencies    
+    CRYPTOCURRENCY *currency;
+    currency = _Allocate(5);
+    if(currency == NULL){
+        printf("\nERROR: Memory allocation failed\n");
+        return 5;
+    }
+
+    _InitializeCurrencies(currency);
+
+    //select currency with matching name
+    for(i = 0; i < 5; i++){
+        //printf("\nComparing: %s and %s", (currency + i)->name, currencyChoice);
+
+        if(strcmp((currency + i)->name, currencyChoice) == 0){
+            exists = 1;
+            break;
+        }
+    }
+    
+    
+    if(exists != 1){
+        printf("\nERROR: selected currency doesn't exist\n");
+    }else{
+        //printf("\nstats_functions>> -> %d", exists);
+    }
+    _FreeMemory(currency);
+    return exists;
 }

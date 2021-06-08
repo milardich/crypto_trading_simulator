@@ -16,3 +16,9 @@ Transaction 6: (BUY)Exchanged 166.20001 of FIAT currency for 5.00000 LTF
 Transaction 7: (SELL)Exchanged 36.57000 of FIAT currency for 3.00000 LTF
 Transaction 8: (SELL)Exchanged 1551.50000 of FIAT currency for 50.00000 DAH
 Transaction 9: (SELL)Exchanged 86.85900 of FIAT currency for 0.30000 BKO
+Transaction 10: (BUY)Exchanged 5.00000 of FIAT currency for 1.#INF0 LXU
+Transaction 11: (BUY)Exchanged 1.00000 of FIAT currency for 1.#INF0 LXU
+Transaction 12: (BUY)Exchanged 1.00000 of FIAT currency for 1.#INF0 LXU
+Transaction 13: (BUY)Exchanged 2.00000 of FIAT currency for 0.00385 LXU
+Transaction 14: (BUY)Exchanged 725.67999 of FIAT currency for 4.00000 BKO
+Transaction 15: (BUY)Exchanged 5.00000 of FIAT currency for 0.02756 BKO

@@ -3,6 +3,7 @@
 #include<string.h>
 #include "control_header.h"
 #include "transaction_header.h"
+#include "../stats/stats_header.h"
 
 void _DisplayCommands(){
     printf("   ____ ___  __  __ __  __    _    _   _ ____  ____  \n");
@@ -64,7 +65,8 @@ void _CommandInput(char input[20]){
 }
 
 void _ProcessCommand(char command[20]){
-    int currencyExists = 1;
+    int currencyExists = 0;
+    int test = 0;
 
     char currencyChoice[3];
     float amount;
@@ -76,14 +78,16 @@ void _ProcessCommand(char command[20]){
         printf("\n Choose a currency you want to buy (currency->amount->method)\n");
         
         //keep entering again if it doesnt exist
-        do{
-            printf(":> currency: ");
+        while(currencyExists != 1){
+            printf("\n:> currency: ");
             scanf("%s", currencyChoice);
-            printf(":> amount: ");
-            scanf("%f", &amount);
-            //currencyExists = _CurrencyExists(currencyChoice);
-        }while(currencyExists == 1);
+            currencyExists = _DoesCurrencyExist(currencyChoice);
+        }
+        printf(":> amount: ");
+        scanf("%f", &amount);
         
+        
+
         //purchase method
         printf("\n 1. Buy %f %s\n", amount, currencyChoice);
         printf(" 2. Buy %f worth of %s\n", amount, currencyChoice);
@@ -100,13 +104,14 @@ void _ProcessCommand(char command[20]){
         printf("\n Choose a currency you want to sell (currency->amount->method)\n");
 
         //keep entering again if it doesnt exist
-        do{
-            printf(":> currency: ");
+        while(currencyExists != 1){
+            printf("\n>: currency: ");
             scanf("%s", currencyChoice);
-            printf(":> amount: ");
-            scanf("%f", &amount);
-            //currencyExists = _CurrencyExists(currencyChoice);
-        }while(currencyExists == 1);
+            currencyExists = _DoesCurrencyExist(currencyChoice);
+        }
+        printf(":> amount: ");
+        scanf("%f", &amount);
+        
         
         //sell method
         printf("\n 1. Sell %f %s\n", amount, currencyChoice);
@@ -124,11 +129,11 @@ void _ProcessCommand(char command[20]){
         printf("\n Choose a currency you want to track\n");
 
         //keep entering again if it doesnt exist
-        do{
-            printf(":> currency: ");
+        while(currencyExists != 1){
+            printf("\n:> currency: ");
             scanf("%s", currencyChoice);
-            //currencyExists = _CurrencyExists(currencyChoice);
-        }while(currencyExists == 1);
+            currencyExists = _DoesCurrencyExist(currencyChoice);
+        }
         _TrackCurrency(currencyChoice);
 
     }else if(strcmp(command, TRANSACTIONS_COMMAND) == 0){
