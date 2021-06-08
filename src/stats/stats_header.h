@@ -19,8 +19,7 @@
     //Check if currencies are generated
     int _IsCurrencyGenerated();
 
-    //Check if currency exists
-    //int _CurrencyExists(char[3]);
+    //Check if currency exists 
     int _DoesCurrencyExist(char[3]);
 
     //initialize already created currencies

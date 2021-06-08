@@ -68,7 +68,7 @@ void _GenerateCurrencies(CRYPTOCURRENCY *currency){
     float lo = 0.1;
     float hi = 199.9;
 
-    int i = 0, j = 0, k = 0;
+    int i = 0, j = 0, k = 0; 
     int currencyNameExists = 0;
 
     for(i = 0; i < 5; i++){

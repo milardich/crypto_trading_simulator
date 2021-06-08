@@ -16,7 +16,7 @@ void _DisplayCommands(){
     printf(" -> buy\n");
     printf(" -> sell\n");
     printf(" -> transactions\n");
-    printf(" -> track\n");
+    printf(" -> track\n"); 
     printf(" ----------------\n");
 }
 
