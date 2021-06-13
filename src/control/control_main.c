@@ -4,7 +4,7 @@
 #include "control_header.h"
 
 int main(){
-
+    
     char input[10];
 
 

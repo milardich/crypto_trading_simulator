@@ -5,6 +5,7 @@
         "string_functions.h": "c",
         "general_tools.h": "c",
         "random": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "control_header.h": "c"
     }
 }

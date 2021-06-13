@@ -22,3 +22,14 @@ Transaction 12: (BUY)Exchanged 1.00000 of FIAT currency for 1.#INF0 LXU
 Transaction 13: (BUY)Exchanged 2.00000 of FIAT currency for 0.00385 LXU
 Transaction 14: (BUY)Exchanged 725.67999 of FIAT currency for 4.00000 BKO
 Transaction 15: (BUY)Exchanged 5.00000 of FIAT currency for 0.02756 BKO
+Transaction 17: (BUY)Exchanged 545.16003 of FIAT currency for 3.00000 JLI
+Transaction 18: (SELL)Exchanged 483.17999 of FIAT currency for 3.00000 JLI
+Transaction 19: (BUY)Exchanged 373.54999 of FIAT currency for 5.00000 GWK
+Transaction 20: (SELL)Exchanged 517.84998 of FIAT currency for 5.00000 GWK
+Transaction 21: (BUY)Exchanged 9.80000 of FIAT currency for 1.00000 AOO
+Transaction 24: (BUY)Exchanged 413.76001 of FIAT currency for 8.00000 AOO
+Transaction 25: (BUY)Exchanged 0.00000 of FIAT currency for 100.00000 AOO
+Transaction 26: (BUY)Exchanged 66.14999 of FIAT currency for 5.00000 AOO
+Transaction 27: (BUY)Exchanged 73.00000 of FIAT currency for 10.00000 AOO
+Transaction 28: (BUY)Exchanged 121.50000 of FIAT currency for 50.00000 AOO
+Transaction 29: (SELL)Exchanged 5103.41992 of FIAT currency for 174.00000 AOO

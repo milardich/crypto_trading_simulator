@@ -1,9 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include "control_header.h"
+//#include "control_header.h"
 #include "transaction_header.h"
 #include "../stats/stats_header.h"
+#include "commands.h"
 
 void _DisplayCommands(){
     printf("   ____ ___  __  __ __  __    _    _   _ ____  ____  \n");

@@ -30,7 +30,7 @@ void _InitializePortfolio(CRYPTOCURRENCY *currency, float currencyAmountInPortfo
 
     printf("\n>>>>>>>>>>>>openning checkfile\n");
 
-    if(isPortfolioGenerated == 0){
+    if(isPortfolioGenerated != 1){
         //generate portfoilo
         for(i = 0; i < 5; i++){
             filename = concat(3, "portfolio/", (currency + i)->name, "_amount.txt");

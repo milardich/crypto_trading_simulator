@@ -4,10 +4,12 @@
 #include<time.h>
 
 #include "../../tools/general_tools/general_tools.h"
+#include "../control/control_header.h"
 #include "stats_header.h"
 
 
 int main(){
+    
     system("cls");
     printf("STATS WINDOW\n\n");
 
@@ -29,7 +31,8 @@ int main(){
         return 1;
     }
     
-
+    
+    
     //check if crypto is already generated (if its not generated (0), generate currencies)
     if(isCryptoGenerated == 0){
         //Generate number of different cryptocurrencies and store them and their properties in da files
@@ -58,7 +61,7 @@ int main(){
         _InitializeCurrencies(currency);
         Sleep(1000);
     }
-    
+    _TrackCurrency((currency + 0)->name);
     system("cls");
     //stats loop
     while(isStatsRunning == 1){

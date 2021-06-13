@@ -12,7 +12,7 @@ int main(){
     system("gcc ../../src/portfolio/*.c ../../src/stats/stats_functions.c ../StringConcat/string_concat.c ../general_tools/general_tools.c -o ../../out/portfolio");
     printf("portfolio built\n");
 
-    system("gcc ../../src/stats/*.c ../StringConcat/string_concat.c ../general_tools/general_tools.c -o ../../out/stats");
+    system("gcc ../../src/stats/*.c ../../src/control/control_functions.c ../../src/control/transaction_functions.c ../../src/portfolio/portfolio_functions.c ../StringConcat/string_concat.c ../general_tools/general_tools.c -o ../../out/stats");
     printf("stats built\n");
 
     return 0;
