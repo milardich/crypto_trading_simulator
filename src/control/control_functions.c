@@ -92,7 +92,7 @@ void _ProcessCommand(char command[20]){
         //purchase method
         printf("\n 1. Buy %f %s\n", amount, currencyChoice);
         printf(" 2. Buy %f worth of %s\n", amount, currencyChoice);
-        printf(" 3. Buy MAX amount of %s", currencyChoice);
+        //printf(" 3. Buy MAX amount of %s", currencyChoice);
         do{
             printf("\n:> method: ");
             scanf("%d", &method);

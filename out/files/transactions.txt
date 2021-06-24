@@ -33,3 +33,16 @@ Transaction 26: (BUY)Exchanged 66.14999 of FIAT currency for 5.00000 AOO
 Transaction 27: (BUY)Exchanged 73.00000 of FIAT currency for 10.00000 AOO
 Transaction 28: (BUY)Exchanged 121.50000 of FIAT currency for 50.00000 AOO
 Transaction 29: (SELL)Exchanged 5103.41992 of FIAT currency for 174.00000 AOO
+Transaction 30: (BUY)Exchanged 511.30002 of FIAT currency for 5.00000 SPL
+Transaction 31: (BUY)Exchanged 907.00000 of FIAT currency for 6.53411 FSO
+Transaction 32: (SELL)Exchanged 2.00000 of FIAT currency for 0.02282 SPL
+Transaction 33: (SELL)Exchanged 208.72000 of FIAT currency for 2.00000 SPL
+Transaction 34: (BUY)Exchanged 106.46000 of FIAT currency for 2.00000 SPL
+Transaction 35: (BUY)Exchanged 100.00000 of FIAT currency for 0.62290 SVA
+Transaction 36: (BUY)Exchanged 153.16000 of FIAT currency for 1.00000 SVA
+Transaction 37: (BUY)Exchanged 3000.00000 of FIAT currency for 31.48284 AOO
+Transaction 38: (SELL)Exchanged 730.34998 of FIAT currency for 15.00000 AOO
+Transaction 39: (BUY)Exchanged 600.14001 of FIAT currency for 2.00000 VIE
+Transaction 40: (SELL)Exchanged 100.00000 of FIAT currency for 0.31883 VIE
+Transaction 41: (SELL)Exchanged 1565.21045 of FIAT currency for 16.48284 AOO
+Transaction 42: (SELL)Exchanged 460.77505 of FIAT currency for 1.68117 VIE

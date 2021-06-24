@@ -53,7 +53,7 @@ void _InitializePortfolio(CRYPTOCURRENCY *currency, float currencyAmountInPortfo
             printf("\nERROR: checkfile could not open\n");
             return;
         }
-        //_WriteCharToFile(portfolioCheckFile, '1');
+        _WriteCharToFile(portfolioCheckFile, '1');
         fclose(portfolioCheckFile);
         
         

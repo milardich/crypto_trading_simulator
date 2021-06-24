@@ -74,7 +74,7 @@ int main(){
         printf(" ----------------------------- \n");
 
         //graphs
-        _DrawGraph(currency);
+        //_DrawGraph(currency);
 
         
 
