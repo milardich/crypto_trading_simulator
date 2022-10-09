@@ -1,7 +1,7 @@
 <h1>Zavrsni projekt iz kolegija Programiranje 2</h1>
 <h3>Simulacija kupovanja i prodavanja kriptovaluta</h3>
 
-![alt text](./screenshot.jpg)
+![Screenshot](screenshot.jpg)
 
 **Commands**
  1. *sell* - for selling currency
