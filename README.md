@@ -1,5 +1,5 @@
 <h1>Zavrsni projekt iz kolegija Programiranje 2</h1>
-<h3>Simulacija kupovanja i prodavanja kriptovaluta</h3>
+<h3>Simulacija kupovine i prodaje kriptovaluta</h3>
 
 ![Screenshot](screenshot.jpg)
 
